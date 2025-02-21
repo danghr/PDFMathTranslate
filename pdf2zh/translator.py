@@ -112,7 +112,7 @@ class BaseTranslator:
             return [
                 {
                     "role": "system",
-                    "content": "You are a professional,authentic machine translation engine. Only Output the translated text, do not include any other text.",
+                    "content": "You are a professional, authentic machine translation engine. Only Output the translated text, do not include any other text.",
                 },
                 {
                     "role": "user",
@@ -480,6 +480,7 @@ class ZhipuTranslator(OpenAITranslator):
     # https://bigmodel.cn/dev/api/thirdparty-frame/openai-sdk
     name = "zhipu"
     envs = {
+        "ZHIPU_BASE_URL": "https://open.bigmodel.cn/api/paas/v4"
         "ZHIPU_API_KEY": None,
         "ZHIPU_MODEL": "glm-4-flash",
     }
@@ -487,7 +488,7 @@ class ZhipuTranslator(OpenAITranslator):
 
     def __init__(self, lang_in, lang_out, model, envs=None, prompt=None):
         self.set_envs(envs)
-        base_url = "https://open.bigmodel.cn/api/paas/v4"
+        base_url = self.envs["ZHIPU_BASE_URL"]
         api_key = self.envs["ZHIPU_API_KEY"]
         if not model:
             model = self.envs["ZHIPU_MODEL"]
@@ -760,17 +761,56 @@ class GroqTranslator(OpenAITranslator):
         self.prompttext = prompt
 
 
-class DeepseekTranslator(OpenAITranslator):
-    name = "deepseek"
+class DeepseekChatTranslator(OpenAITranslator):
+    name = "deepseek-chat"
     envs = {
-        "DEEPSEEK_API_KEY": None,
-        "DEEPSEEK_MODEL": "deepseek-chat",
+        "DEEPSEEKCHAT_BASE_URL": "https://api.deepseek.com/v1",
+        "DEEPSEEKCHAT_API_KEY": None,
+        "DEEPSEEKCHAT_MODEL": "deepseek-chat",
     }
     CustomPrompt = True
 
     def __init__(self, lang_in, lang_out, model, envs=None, prompt=None):
         self.set_envs(envs)
-        base_url = "https://api.deepseek.com/v1"
+        base_url = self.envs["DEEPSEEKCHAT_BASE_URL"]
+        api_key = self.envs["DEEPSEEKCHAT_API_KEY"]
+        if not model:
+            model = self.envs["DEEPSEEKCHAT_MODEL"]
+        super().__init__(lang_in, lang_out, model, base_url=base_url, api_key=api_key)
+        self.prompttext = prompt
+
+
+class DeepseekReasonerTranslator(OpenAITranslator):
+    name = "deepseek-reasoner"
+    envs = {
+        "DEEPSEEKREASONER_BASE_URL": "https://api.deepseek.com/v1",
+        "DEEPSEEKREASONER_API_KEY": None,
+        "DEEPSEEKREASONER_MODEL": "deepseek-reasoner",
+    }
+    CustomPrompt = True
+
+    def __init__(self, lang_in, lang_out, model, envs=None, prompt=None):
+        self.set_envs(envs)
+        base_url = self.envs["DEEPSEEKREASONER_BASE_URL"]
+        api_key = self.envs["DEEPSEEKREASONER_API_KEY"]
+        if not model:
+            model = self.envs["DEEPSEEKREASONER_MODEL"]
+        super().__init__(lang_in, lang_out, model, base_url=base_url, api_key=api_key)
+        self.prompttext = prompt
+
+
+class DeepseekReasonerDistillTranslator(OpenAITranslator):
+    name = "deepseek-reasoner-distill"
+    envs = {
+        "DEEPSEEKREASONERDISTILL_BASE_URL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+        "DEEPSEEKREASONERDISTILL_API_KEY": None,
+        "DEEPSEEKREASONERDISTILL_MODEL": "deepseek-r1-distill-qwen-32b",
+    }
+    CustomPrompt = True
+
+    def __init__(self, lang_in, lang_out, model, envs=None, prompt=None):
+        self.set_envs(envs)
+        base_url = self.envs["DEEPSEEK_BASE_URL"]
         api_key = self.envs["DEEPSEEK_API_KEY"]
         if not model:
             model = self.envs["DEEPSEEK_MODEL"]
@@ -806,18 +846,18 @@ class OpenAIlikedTranslator(OpenAITranslator):
         self.prompttext = prompt
 
 
-class QwenMtTranslator(OpenAITranslator):
+class QwenMtTurboTranslator(OpenAITranslator):
     """
     Use Qwen-MT model from Aliyun. it's designed for translating.
     Since Traditional Chinese is not yet supported by Aliyun. it will be also translated to Simplified Chinese, when it's selected.
     There's special parameters in the message to the server.
     """
 
-    name = "qwen-mt"
+    name = "qwen-mt-turbo"
     envs = {
-        "ALI_MODEL": "qwen-mt-turbo",
-        "ALI_API_KEY": None,
-        "ALI_DOMAINS": "This sentence is extracted from a scientific paper. When translating, please pay close attention to the use of specialized troubleshooting terminologies and adhere to scientific sentence structures to maintain the technical rigor and precision of the original text.",
+        "QWENMTTURBO_MODEL": "qwen-mt-turbo",
+        "QWENMTTURBO_API_KEY": None,
+        "QWENMTTURBO_DOMAINS": "This sentence is extracted from a scientific paper. When translating, please pay close attention to the use of specialized troubleshooting terminologies and adhere to scientific sentence structures to maintain the technical rigor and precision of the original text.",
     }
     CustomPrompt = True
 
@@ -871,3 +911,18 @@ class QwenMtTranslator(OpenAITranslator):
             extra_body={"translation_options": translation_options},
         )
         return response.choices[0].message.content.strip()
+
+
+class QwenMtPlusTranslator(QwenMtTurboTranslator):
+    """
+    Use Qwen-MT model from Aliyun. it's designed for translating.
+    Since Traditional Chinese is not yet supported by Aliyun. it will be also translated to Simplified Chinese, when it's selected.
+    There's special parameters in the message to the server.
+    """
+
+    name = "qwen-mt-max"
+    envs = {
+        "QWENMTPLUS_MODEL": "qwen-mt-max",
+        "QWENMTPLUS_API_KEY": None,
+        "QWENMTPLUS_DOMAINS": "This sentence is extracted from a scientific paper. When translating, please pay close attention to the use of specialized troubleshooting terminologies and adhere to scientific sentence structures to maintain the technical rigor and precision of the original text.",
+    }

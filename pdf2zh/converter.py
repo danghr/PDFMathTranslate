@@ -40,9 +40,12 @@ from pdf2zh.translator import (
     ArgosTranslator,
     GorkTranslator,
     GroqTranslator,
-    DeepseekTranslator,
+    DeepseekChatTranslator,
+    DeepseekReasonerTranslator,
+    DeepseekReasonerDistillTranslator,
     OpenAIlikedTranslator,
-    QwenMtTranslator,
+    QwenMtTurboTranslator,
+    QwenMtPlusTranslator,
 )
 from pymupdf import Font
 
@@ -161,8 +164,34 @@ class TranslateConverter(PDFConverterEx):
         service_model = param[1] if len(param) > 1 else None
         if not envs:
             envs = {}
-        for translator in [GoogleTranslator, BingTranslator, DeepLTranslator, DeepLXTranslator, OllamaTranslator, XinferenceTranslator, AzureOpenAITranslator,
-                           OpenAITranslator, ZhipuTranslator, ModelScopeTranslator, SiliconTranslator, GeminiTranslator, AzureTranslator, TencentTranslator, DifyTranslator, AnythingLLMTranslator, ArgosTranslator, GorkTranslator, GroqTranslator, DeepseekTranslator, OpenAIlikedTranslator, QwenMtTranslator,]:
+        for translator in (
+            AzureOpenAITranslator,
+            BaseTranslator,
+            GoogleTranslator,
+            BingTranslator,
+            DeepLTranslator,
+            DeepLXTranslator,
+            OllamaTranslator,
+            OpenAITranslator,
+            ZhipuTranslator,
+            ModelScopeTranslator,
+            SiliconTranslator,
+            GeminiTranslator,
+            AzureTranslator,
+            TencentTranslator,
+            DifyTranslator,
+            AnythingLLMTranslator,
+            XinferenceTranslator,
+            ArgosTranslator,
+            GorkTranslator,
+            GroqTranslator,
+            DeepseekChatTranslator,
+            DeepseekReasonerTranslator,
+            DeepseekReasonerDistillTranslator,
+            OpenAIlikedTranslator,
+            QwenMtTurboTranslator,
+            QwenMtPlusTranslator,
+        ):
             if service_name == translator.name:
                 self.translator = translator(lang_in, lang_out, service_model, envs=envs, prompt=prompt)
         if not self.translator:
