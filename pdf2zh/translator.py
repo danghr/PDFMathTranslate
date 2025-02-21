@@ -480,7 +480,7 @@ class ZhipuTranslator(OpenAITranslator):
     # https://bigmodel.cn/dev/api/thirdparty-frame/openai-sdk
     name = "zhipu"
     envs = {
-        "ZHIPU_BASE_URL": "https://open.bigmodel.cn/api/paas/v4"
+        "ZHIPU_BASE_URL": "https://open.bigmodel.cn/api/paas/v4",
         "ZHIPU_API_KEY": None,
         "ZHIPU_MODEL": "glm-4-flash",
     }
@@ -864,10 +864,10 @@ class QwenMtTurboTranslator(OpenAITranslator):
     def __init__(self, lang_in, lang_out, model, envs=None, prompt=None):
         self.set_envs(envs)
         base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
-        api_key = self.envs["ALI_API_KEY"]
+        api_key = self.envs["QWENMTTURBO_API_KEY"]
 
         if not model:
-            model = self.envs["ALI_MODEL"]
+            model = self.envs["QWENMTTURBO_MODEL"]
 
         super().__init__(lang_in, lang_out, model, base_url=base_url, api_key=api_key)
         self.prompttext = prompt
@@ -902,7 +902,7 @@ class QwenMtTurboTranslator(OpenAITranslator):
         translation_options = {
             "source_lang": self.lang_mapping(self.lang_in),
             "target_lang": self.lang_mapping(self.lang_out),
-            "domains": self.envs["ALI_DOMAINS"],
+            "domains": self.envs["QWENMTTURBO_DOMAINS"],
         }
         response = self.client.chat.completions.create(
             model=self.model,
@@ -926,3 +926,55 @@ class QwenMtPlusTranslator(QwenMtTurboTranslator):
         "QWENMTPLUS_API_KEY": None,
         "QWENMTPLUS_DOMAINS": "This sentence is extracted from a scientific paper. When translating, please pay close attention to the use of specialized troubleshooting terminologies and adhere to scientific sentence structures to maintain the technical rigor and precision of the original text.",
     }
+    CustomPrompt = True
+
+    def __init__(self, lang_in, lang_out, model, envs=None, prompt=None):
+        self.set_envs(envs)
+        base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+        api_key = self.envs["QWENMTPLUS_API_KEY"]
+
+        if not model:
+            model = self.envs["QWENMTPLUS_MODEL"]
+
+        super().__init__(lang_in, lang_out, model, base_url=base_url, api_key=api_key)
+        self.prompttext = prompt
+
+    @staticmethod
+    def lang_mapping(input_lang: str) -> str:
+        """
+        Mapping the language code to the language code that Aliyun Qwen-Mt model supports.
+        Since all existings languagues codes used in gui.py are able to be mapped, the original
+        languague code will not be checked.
+        """
+        langdict = {
+            "zh": "Chinese",
+            "zh-TW": "Chinese",
+            "en": "English",
+            "fr": "French",
+            "de": "German",
+            "ja": "Japanese",
+            "ko": "Korean",
+            "ru": "Russian",
+            "es": "Spanish",
+            "it": "Italian",
+        }
+
+        return langdict[input_lang]
+
+    def do_translate(self, text) -> str:
+        """
+        Qwen-MT Model reqeust to send translation_options to the server.
+        domains are options, but suggested. it must be in English.
+        """
+        translation_options = {
+            "source_lang": self.lang_mapping(self.lang_in),
+            "target_lang": self.lang_mapping(self.lang_out),
+            "domains": self.envs["QWENMTPLUS_DOMAINS"],
+        }
+        response = self.client.chat.completions.create(
+            model=self.model,
+            **self.options,
+            messages=[{"role": "user", "content": text}],
+            extra_body={"translation_options": translation_options},
+        )
+        return response.choices[0].message.content.strip()
