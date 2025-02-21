@@ -920,9 +920,9 @@ class QwenMtPlusTranslator(QwenMtTurboTranslator):
     There's special parameters in the message to the server.
     """
 
-    name = "qwen-mt-max"
+    name = "qwen-mt-plus"
     envs = {
-        "QWENMTPLUS_MODEL": "qwen-mt-max",
+        "QWENMTPLUS_MODEL": "qwen-mt-plus",
         "QWENMTPLUS_API_KEY": None,
         "QWENMTPLUS_DOMAINS": "This sentence is extracted from a scientific paper. When translating, please pay close attention to the use of specialized troubleshooting terminologies and adhere to scientific sentence structures to maintain the technical rigor and precision of the original text.",
     }
