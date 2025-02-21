@@ -211,7 +211,7 @@ class DeepLTranslator(BaseTranslator):
     # https://github.com/DeepLcom/deepl-python
     name = "deepl"
     envs = {
-        "DEEPL_AUTH_KEY": None,
+        "DEEPL_AUTH_KEY": ConfigManager.get("DEEPL_AUTH_KEY"),
     }
     lang_map = {"zh": "zh-Hans"}
 
@@ -232,8 +232,8 @@ class DeepLXTranslator(BaseTranslator):
     # https://deeplx.owo.network/endpoints/free.html
     name = "deeplx"
     envs = {
-        "DEEPLX_ENDPOINT": "https://api.deepl.com/translate",
-        "DEEPLX_ACCESS_TOKEN": None,
+        "DEEPLX_ENDPOINT": ConfigManager.get("DEEPLX_ENDPOINT"),
+        "DEEPLX_ACCESS_TOKEN": ConfigManager.get("DEEPLX_ACCESS_TOKEN"),
     }
     lang_map = {"zh": "zh-Hans"}
 
@@ -263,8 +263,8 @@ class OllamaTranslator(BaseTranslator):
     # https://github.com/ollama/ollama-python
     name = "ollama"
     envs = {
-        "OLLAMA_HOST": "http://127.0.0.1:11434",
-        "OLLAMA_MODEL": "gemma2",
+        "OLLAMA_HOST": ConfigManager.get("OLLAMA_HOST"),
+        "OLLAMA_MODEL": ConfigManager.get("OLLAMA_MODEL"),
     }
     CustomPrompt = True
 
@@ -307,8 +307,8 @@ class XinferenceTranslator(BaseTranslator):
     # https://github.com/xorbitsai/inference
     name = "xinference"
     envs = {
-        "XINFERENCE_HOST": "http://127.0.0.1:9997",
-        "XINFERENCE_MODEL": "gemma-2-it",
+        "XINFERENCE_HOST": ConfigManager.get("XINFERENCE_HOST"),
+        "XINFERENCE_MODEL": ConfigManager.get("XINFERENCE_MODEL"),
     }
     CustomPrompt = True
 
@@ -356,9 +356,9 @@ class OpenAITranslator(BaseTranslator):
     # https://github.com/openai/openai-python
     name = "openai"
     envs = {
-        "OPENAI_BASE_URL": "https://api.openai.com/v1",
-        "OPENAI_API_KEY": None,
-        "OPENAI_MODEL": "gpt-4o-mini",
+        "OPENAI_BASE_URL": ConfigManager.get("OPENAI_BASE_URL"),
+        "OPENAI_API_KEY": ConfigManager.get("OPENAI_API_KEY"),
+        "OPENAI_MODEL": ConfigManager.get("OPENAI_MODEL"),
     }
     CustomPrompt = True
 
@@ -408,9 +408,9 @@ class OpenAITranslator(BaseTranslator):
 class AzureOpenAITranslator(BaseTranslator):
     name = "azure-openai"
     envs = {
-        "AZURE_OPENAI_BASE_URL": None,  # e.g. "https://xxx.openai.azure.com"
-        "AZURE_OPENAI_API_KEY": None,
-        "AZURE_OPENAI_MODEL": "gpt-4o-mini",
+        "AZURE_OPENAI_BASE_URL": ConfigManager.get("AZURE_OPENAI_BASE_URL"),  # e.g. "https://xxx.openai.azure.com"
+        "AZURE_OPENAI_API_KEY": ConfigManager.get("AZURE_OPENAI_API_KEY"),
+        "AZURE_OPENAI_MODEL": ConfigManager.get("AZURE_OPENAI_MODEL"),
     }
     CustomPrompt = True
 
@@ -451,9 +451,9 @@ class AzureOpenAITranslator(BaseTranslator):
 class ModelScopeTranslator(OpenAITranslator):
     name = "modelscope"
     envs = {
-        "MODELSCOPE_BASE_URL": "https://api-inference.modelscope.cn/v1",
-        "MODELSCOPE_API_KEY": None,
-        "MODELSCOPE_MODEL": "Qwen/Qwen2.5-32B-Instruct",
+        "MODELSCOPE_BASE_URL": ConfigManager.get("MODELSCOPE_BASE_URL"),
+        "MODELSCOPE_API_KEY": ConfigManager.get("MODELSCOPE_API_KEY"),
+        "MODELSCOPE_MODEL": ConfigManager.get("MODELSCOPE_MODEL"),
     }
     CustomPrompt = True
 
@@ -480,9 +480,9 @@ class ZhipuTranslator(OpenAITranslator):
     # https://bigmodel.cn/dev/api/thirdparty-frame/openai-sdk
     name = "zhipu"
     envs = {
-        "ZHIPU_BASE_URL": "https://open.bigmodel.cn/api/paas/v4",
-        "ZHIPU_API_KEY": None,
-        "ZHIPU_MODEL": "glm-4-flash",
+        "ZHIPU_BASE_URL": ConfigManager.get("ZHIPU_BASE_URL"),
+        "ZHIPU_API_KEY": ConfigManager.get("ZHIPU_API_KEY"),
+        "ZHIPU_MODEL": ConfigManager.get("ZHIPU_MODEL"),
     }
     CustomPrompt = True
 
@@ -516,8 +516,8 @@ class SiliconTranslator(OpenAITranslator):
     # https://docs.siliconflow.cn/quickstart
     name = "silicon"
     envs = {
-        "SILICON_API_KEY": None,
-        "SILICON_MODEL": "Qwen/Qwen2.5-7B-Instruct",
+        "SILICON_API_KEY": ConfigManager.get("SILICON_API_KEY"),
+        "SILICON_MODEL": ConfigManager.get("SILICON_MODEL"),
     }
     CustomPrompt = True
 
@@ -535,8 +535,8 @@ class GeminiTranslator(OpenAITranslator):
     # https://ai.google.dev/gemini-api/docs/openai
     name = "gemini"
     envs = {
-        "GEMINI_API_KEY": None,
-        "GEMINI_MODEL": "gemini-1.5-flash",
+        "GEMINI_API_KEY": ConfigManager.get("GEMINI_API_KEY"),
+        "GEMINI_MODEL": ConfigManager.get("GEMINI_MODEL"),
     }
     CustomPrompt = True
 
@@ -554,8 +554,8 @@ class AzureTranslator(BaseTranslator):
     # https://github.com/Azure/azure-sdk-for-python
     name = "azure"
     envs = {
-        "AZURE_ENDPOINT": "https://api.translator.azure.cn",
-        "AZURE_API_KEY": None,
+        "AZURE_ENDPOINT": ConfigManager.get("AZURE_ENDPOINT"),
+        "AZURE_API_KEY": ConfigManager.get("AZURE_API_KEY"),
     }
     lang_map = {"zh": "zh-Hans"}
 
@@ -586,8 +586,8 @@ class TencentTranslator(BaseTranslator):
     # https://github.com/TencentCloud/tencentcloud-sdk-python
     name = "tencent"
     envs = {
-        "TENCENTCLOUD_SECRET_ID": None,
-        "TENCENTCLOUD_SECRET_KEY": None,
+        "TENCENTCLOUD_SECRET_ID": ConfigManager.get("TENCENTCLOUD_SECRET_ID"),
+        "TENCENTCLOUD_SECRET_KEY": ConfigManager.get("TENCENTCLOUD_SECRET_KEY"),
     }
 
     def __init__(self, lang_in, lang_out, model, envs=None, **kwargs):
@@ -728,8 +728,8 @@ class GorkTranslator(OpenAITranslator):
     # https://docs.x.ai/docs/overview#getting-started
     name = "grok"
     envs = {
-        "GORK_API_KEY": None,
-        "GORK_MODEL": "grok-2-1212",
+        "GORK_API_KEY": ConfigManager.get("GORK_API_KEY"),
+        "GORK_MODEL": ConfigManager.get("GORK_MODEL"),
     }
     CustomPrompt = True
 
@@ -746,8 +746,8 @@ class GorkTranslator(OpenAITranslator):
 class GroqTranslator(OpenAITranslator):
     name = "groq"
     envs = {
-        "GROQ_API_KEY": None,
-        "GROQ_MODEL": "llama-3-3-70b-versatile",
+        "GROQ_API_KEY": ConfigManager.get("GROQ_API_KEY"),
+        "GROQ_MODEL": ConfigManager.get("GROQ_MODEL"),
     }
     CustomPrompt = True
 
@@ -764,9 +764,9 @@ class GroqTranslator(OpenAITranslator):
 class DeepseekChatTranslator(OpenAITranslator):
     name = "deepseek-chat"
     envs = {
-        "DEEPSEEKCHAT_BASE_URL": "https://api.deepseek.com/v1",
-        "DEEPSEEKCHAT_API_KEY": None,
-        "DEEPSEEKCHAT_MODEL": "deepseek-chat",
+        "DEEPSEEKCHAT_BASE_URL": ConfigManager.get("DEEPSEEKCHAT_BASE_URL"),
+        "DEEPSEEKCHAT_API_KEY": ConfigManager.get("DEEPSEEKCHAT_API_KEY"),
+        "DEEPSEEKCHAT_MODEL": ConfigManager.get("DEEPSEEKCHAT_MODEL"),
     }
     CustomPrompt = True
 
@@ -778,14 +778,15 @@ class DeepseekChatTranslator(OpenAITranslator):
             model = self.envs["DEEPSEEKCHAT_MODEL"]
         super().__init__(lang_in, lang_out, model, base_url=base_url, api_key=api_key)
         self.prompttext = prompt
+        print(base_url, api_key, model, "\n", self.prompttext)
 
 
 class DeepseekReasonerTranslator(OpenAITranslator):
     name = "deepseek-reasoner"
     envs = {
-        "DEEPSEEKREASONER_BASE_URL": "https://api.deepseek.com/v1",
-        "DEEPSEEKREASONER_API_KEY": None,
-        "DEEPSEEKREASONER_MODEL": "deepseek-reasoner",
+        "DEEPSEEKREASONER_BASE_URL": ConfigManager.get("DEEPSEEKREASONER_BASE_URL"),
+        "DEEPSEEKREASONER_API_KEY": ConfigManager.get("DEEPSEEKREASONER_API_KEY"),
+        "DEEPSEEKREASONER_MODEL": ConfigManager.get("DEEPSEEKREASONER_MODEL"),
     }
     CustomPrompt = True
 
@@ -802,18 +803,18 @@ class DeepseekReasonerTranslator(OpenAITranslator):
 class DeepseekReasonerDistillTranslator(OpenAITranslator):
     name = "deepseek-reasoner-distill"
     envs = {
-        "DEEPSEEKREASONERDISTILL_BASE_URL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-        "DEEPSEEKREASONERDISTILL_API_KEY": None,
-        "DEEPSEEKREASONERDISTILL_MODEL": "deepseek-r1-distill-qwen-32b",
+        "DEEPSEEKREASONERDISTILL_BASE_URL": ConfigManager.get("DEEPSEEKREASONERDISTILL_BASE_URL"),
+        "DEEPSEEKREASONERDISTILL_API_KEY": ConfigManager.get("DEEPSEEKREASONERDISTILL_API_KEY"),
+        "DEEPSEEKREASONERDISTILL_MODEL": ConfigManager.get("DEEPSEEKREASONERDISTILL_MODEL"),
     }
     CustomPrompt = True
 
     def __init__(self, lang_in, lang_out, model, envs=None, prompt=None):
         self.set_envs(envs)
-        base_url = self.envs["DEEPSEEK_BASE_URL"]
-        api_key = self.envs["DEEPSEEK_API_KEY"]
+        base_url = self.envs["DEEPSEEKREASONERDISTILL_BASE_URL"]
+        api_key = self.envs["DEEPSEEKREASONERDISTILL_API_KEY"]
         if not model:
-            model = self.envs["DEEPSEEK_MODEL"]
+            model = self.envs["DEEPSEEKREASONERDISTILL_MODEL"]
         super().__init__(lang_in, lang_out, model, base_url=base_url, api_key=api_key)
         self.prompttext = prompt
 
@@ -821,9 +822,9 @@ class DeepseekReasonerDistillTranslator(OpenAITranslator):
 class OpenAIlikedTranslator(OpenAITranslator):
     name = "openailiked"
     envs = {
-        "OPENAILIKED_BASE_URL": None,
-        "OPENAILIKED_API_KEY": None,
-        "OPENAILIKED_MODEL": None,
+        "OPENAILIKED_BASE_URL": ConfigManager.get("OPENAILIKED_BASE_URL"),
+        "OPENAILIKED_API_KEY": ConfigManager.get("OPENAILIKED_API_KEY"),
+        "OPENAILIKED_MODEL": ConfigManager.get("OPENAILIKED_MODEL"),
     }
     CustomPrompt = True
 
@@ -855,8 +856,8 @@ class QwenMtTurboTranslator(OpenAITranslator):
 
     name = "qwen-mt-turbo"
     envs = {
-        "QWENMTTURBO_MODEL": "qwen-mt-turbo",
-        "QWENMTTURBO_API_KEY": None,
+        "QWENMTTURBO_MODEL": ConfigManager.get("QWENMTTURBO_MODEL"),
+        "QWENMTTURBO_API_KEY": ConfigManager.get("QWENMTTURBO_API_KEY"),
         "QWENMTTURBO_DOMAINS": "This sentence is extracted from a scientific paper. When translating, please pay close attention to the use of specialized troubleshooting terminologies and adhere to scientific sentence structures to maintain the technical rigor and precision of the original text.",
     }
     CustomPrompt = True
@@ -922,8 +923,8 @@ class QwenMtPlusTranslator(QwenMtTurboTranslator):
 
     name = "qwen-mt-plus"
     envs = {
-        "QWENMTPLUS_MODEL": "qwen-mt-plus",
-        "QWENMTPLUS_API_KEY": None,
+        "QWENMTPLUS_MODEL": ConfigManager.get("QWENMTPLUS_MODEL"),
+        "QWENMTPLUS_API_KEY": ConfigManager.get("QWENMTPLUS_API_KEY"),
         "QWENMTPLUS_DOMAINS": "This sentence is extracted from a scientific paper. When translating, please pay close attention to the use of specialized troubleshooting terminologies and adhere to scientific sentence structures to maintain the technical rigor and precision of the original text.",
     }
     CustomPrompt = True
