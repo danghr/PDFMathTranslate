@@ -215,7 +215,7 @@ pdf2zh example.pdf -li en -lo ja
 |**Bing**|`bing`|None|N/A|None|
 |**DeepSeek Chat**|`deepseek-chat`| `DEEPSEEKCHAT_BASE_URL`, `DEEPSEEKCHAT_API_KEY`, `DEEPSEEKCHAT_MODEL` | `https://api.deepseek.com/v1`, `[Your DEEPSEEK_API_KEY]`, `deepseek-chat` |See [DeepSeek](https://www.deepseek.com/)|
 |**DeepSeek Reasoner**|`deepseek-reasoner`| `DEEPSEEKREASONER_BASE_URL`, `DEEPSEEKREASONER_API_KEY`, `DEEPSEEKREASONER_MODEL` | `https://api.deepseek.com/v1`, `[Your DEEPSEEK_API_KEY]`, `deepseek-reasoner` |See [DeepSeek](https://www.deepseek.com/)|
-|**DeepSeek Reasoner (Distill)**|`deepseek-reasoner-distill`| `DEEPSEEKREASONERDISTILL_BASE_URL`, `DEEPSEEKREASONERDISTILL_API_KEY`, `DEEPSEEKREASONERDISTILL_MODEL` | `https://dashscope.aliyuncs.com/compatible-mode/v1`, `[Your API Key]`, `deepseek-r1-distill-qwen-32b` |See [Aliyun Bailian](https://bailian.console.aliyun.com/)|
+|**DeepSeek Reasoner (Distill)**|`deepseek-reasoner-d`| `DEEPSEEKREASONERDISTILL_BASE_URL`, `DEEPSEEKREASONERDISTILL_API_KEY`, `DEEPSEEKREASONERDISTILL_MODEL` | `https://dashscope.aliyuncs.com/compatible-mode/v1`, `[Your API Key]`, `deepseek-r1-distill-qwen-32b` |See [Aliyun Bailian](https://bailian.console.aliyun.com/)|
 |**QWen MT Turbo**|`qwen-mt-turbo`| `QWENMTTURBO_MODEL`, `QWENMTTURBO_API_KEY` | `[Your API Key]`, `qwen-mt-turbo` |See [Aliyun Bailian](https://bailian.console.aliyun.com/)|
 |**QWen MT Max**|`qwen-mt-plus`| `QWENMTTURBO_MODEL`, `QWENMTTURBO_API_KEY` | `[Your API Key]`, `qwen-mt-plus` |See [Aliyun Bailian](https://bailian.console.aliyun.com/)|
 <!-- |**OpenAI-Liked**|`openailiked`| `OPENAILIKED_BASE_URL`, `OPENAILIKED_API_KEY`, `OPENAILIKED_MODEL` | `url`, `[Your Key]`, `model name` | None | -->
