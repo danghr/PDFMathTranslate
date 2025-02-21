@@ -211,27 +211,31 @@ pdf2zh example.pdf -li en -lo ja
 
 |**Translator**|**Service**|**Environment Variables**|**Default Values**|**Notes**|
 |-|-|-|-|-|
-|**Google (Default)**|`google`|無|N/A|無|
-|**Bing**|`bing`|無|N/A|無|
-|**DeepL**|`deepl`|`DEEPL_AUTH_KEY`|`[Your Key]`|參閱 [DeepL](https://support.deepl.com/hc/en-us/articles/360020695820-API-Key-for-DeepL-s-API)|
-|**DeepLX**|`deeplx`|`DEEPLX_ENDPOINT`|`https://api.deepl.com/translate`|參閱 [DeepLX](https://github.com/OwO-Network/DeepLX)|
-|**Ollama**|`ollama`|`OLLAMA_HOST`, `OLLAMA_MODEL`|`http://127.0.0.1:11434`, `gemma2`|參閱 [Ollama](https://github.com/ollama/ollama)|
-|**OpenAI**|`openai`|`OPENAI_BASE_URL`, `OPENAI_API_KEY`, `OPENAI_MODEL`|`https://api.openai.com/v1`, `[Your Key]`, `gpt-4o-mini`|參閱 [OpenAI](https://platform.openai.com/docs/overview)|
-|**AzureOpenAI**|`azure-openai`|`AZURE_OPENAI_BASE_URL`, `AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_MODEL`|`[Your Endpoint]`, `[Your Key]`, `gpt-4o-mini`|參閱 [Azure OpenAI](https://learn.microsoft.com/zh-cn/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Cjavascript-keyless%2Ctypescript-keyless%2Cpython&pivots=programming-language-python)|
-|**Zhipu**|`zhipu`|`ZHIPU_API_KEY`, `ZHIPU_MODEL`|`[Your Key]`, `glm-4-flash`|參閱 [Zhipu](https://open.bigmodel.cn/dev/api/thirdparty-frame/openai-sdk)|
-| **ModelScope**       | `modelscope`   |`MODELSCOPE_API_KEY`, `MODELSCOPE_MODEL`|`[Your Key]`, `Qwen/Qwen2.5-Coder-32B-Instruct`| 參閱 [ModelScope](https://www.modelscope.cn/docs/model-service/API-Inference/intro)|
-|**Silicon**|`silicon`|`SILICON_API_KEY`, `SILICON_MODEL`|`[Your Key]`, `Qwen/Qwen2.5-7B-Instruct`|參閱 [SiliconCloud](https://docs.siliconflow.cn/quickstart)|
-|**Gemini**|`gemini`|`GEMINI_API_KEY`, `GEMINI_MODEL`|`[Your Key]`, `gemini-1.5-flash`|參閱 [Gemini](https://ai.google.dev/gemini-api/docs/openai)|
-|**Azure**|`azure`|`AZURE_ENDPOINT`, `AZURE_API_KEY`|`https://api.translator.azure.cn`, `[Your Key]`|參閱 [Azure](https://docs.azure.cn/en-us/ai-services/translator/text-translation-overview)|
-|**Tencent**|`tencent`|`TENCENTCLOUD_SECRET_ID`, `TENCENTCLOUD_SECRET_KEY`|`[Your ID]`, `[Your Key]`|參閱 [Tencent](https://www.tencentcloud.com/products/tmt?from_qcintl=122110104)|
-|**Dify**|`dify`|`DIFY_API_URL`, `DIFY_API_KEY`|`[Your DIFY URL]`, `[Your Key]`|參閱 [Dify](https://github.com/langgenius/dify)，需要在 Dify 的工作流程輸入中定義三個變數：lang_out、lang_in、text。|
-|**AnythingLLM**|`anythingllm`|`AnythingLLM_URL`, `AnythingLLM_APIKEY`|`[Your AnythingLLM URL]`, `[Your Key]`|參閱 [anything-llm](https://github.com/Mintplex-Labs/anything-llm)|
-|**Argos Translate**|`argos`| | |參閱 [argos-translate](https://github.com/argosopentech/argos-translate)|
-|**Grok**|`grok`| `GORK_API_KEY`, `GORK_MODEL` | `[Your GORK_API_KEY]`, `grok-2-1212` |參閱 [Grok](https://docs.x.ai/docs/overview)|
-|**DeepSeek**|`deepseek`| `DEEPSEEK_API_KEY`, `DEEPSEEK_MODEL` | `[Your DEEPSEEK_API_KEY]`, `deepseek-chat` |參閱 [DeepSeek](https://www.deepseek.com/)|
-|**OpenAI-Liked**|`openailiked`| `OPENAILIKED_BASE_URL`, `OPENAILIKED_API_KEY`, `OPENAILIKED_MODEL` | `url`, `[Your Key]`, `model name` | 無 |
+|**Google (Default)**|`google`|None|N/A|None|
+|**Bing**|`bing`|None|N/A|None|
+|**DeepSeek Chat**|`deepseek-chat`| `DEEPSEEKCHAT_BASE_URL`, `DEEPSEEKCHAT_API_KEY`, `DEEPSEEKCHAT_MODEL` | `https://api.deepseek.com/v1`, `[Your DEEPSEEK_API_KEY]`, `deepseek-chat` |See [DeepSeek](https://www.deepseek.com/)|
+|**DeepSeek Reasoner**|`deepseek-reasoner`| `DEEPSEEKREASONER_BASE_URL`, `DEEPSEEKREASONER_API_KEY`, `DEEPSEEKREASONER_MODEL` | `https://api.deepseek.com/v1`, `[Your DEEPSEEK_API_KEY]`, `deepseek-reasoner` |See [DeepSeek](https://www.deepseek.com/)|
+|**DeepSeek Reasoner (Distill)**|`deepseek-reasoner-distill`| `DEEPSEEKREASONERDISTILL_BASE_URL`, `DEEPSEEKREASONERDISTILL_API_KEY`, `DEEPSEEKREASONERDISTILL_MODEL` | `https://dashscope.aliyuncs.com/compatible-mode/v1`, `[Your API Key]`, `deepseek-r1-distill-qwen-32b` |See [Aliyun Bailian](https://bailian.console.aliyun.com/)|
+|**QWen MT Turbo**|`qwen-mt-turbo`| `QWENMTTURBO_MODEL`, `QWENMTTURBO_API_KEY` | `[Your API Key]`, `qwen-mt-turbo` |See [Aliyun Bailian](https://bailian.console.aliyun.com/)|
+|**QWen MT Max**|`qwen-mt-plus`| `QWENMTTURBO_MODEL`, `QWENMTTURBO_API_KEY` | `[Your API Key]`, `qwen-mt-plus` |See [Aliyun Bailian](https://bailian.console.aliyun.com/)|
+<!-- |**OpenAI-Liked**|`openailiked`| `OPENAILIKED_BASE_URL`, `OPENAILIKED_API_KEY`, `OPENAILIKED_MODEL` | `url`, `[Your Key]`, `model name` | None | -->
+<!-- |**DeepL**|`deepl`|`DEEPL_AUTH_KEY`|`[Your Key]`|See [DeepL](https://support.deepl.com/hc/en-us/articles/360020695820-API-Key-for-DeepL-s-API)| -->
+<!-- |**DeepLX**|`deeplx`|`DEEPLX_ENDPOINT`|`https://api.deepl.com/translate`|See [DeepLX](https://github.com/OwO-Network/DeepLX)| -->
+<!-- |**Ollama**|`ollama`|`OLLAMA_HOST`, `OLLAMA_MODEL`|`http://127.0.0.1:11434`, `gemma2`|See [Ollama](https://github.com/ollama/ollama)| -->
+<!-- |**OpenAI**|`openai`|`OPENAI_BASE_URL`, `OPENAI_API_KEY`, `OPENAI_MODEL`|`https://api.openai.com/v1`, `[Your Key]`, `gpt-4o-mini`|See [OpenAI](https://platform.openai.com/docs/overview)| -->
+<!-- |**AzureOpenAI**|`azure-openai`|`AZURE_OPENAI_BASE_URL`, `AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_MODEL`|`[Your Endpoint]`, `[Your Key]`, `gpt-4o-mini`|See [Azure OpenAI](https://learn.microsoft.com/zh-cn/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Cjavascript-keyless%2Ctypescript-keyless%2Cpython&pivots=programming-language-python)| -->
+<!-- |**Zhipu**|`zhipu`|`ZHIPU_API_KEY`, `ZHIPU_MODEL`|`[Your Key]`, `glm-4-flash`|See [Zhipu](https://open.bigmodel.cn/dev/api/thirdparty-frame/openai-sdk)| -->
+<!-- | **ModelScope**       | `modelscope`   |`MODELSCOPE_API_KEY`, `MODELSCOPE_MODEL`|`[Your Key]`, `Qwen/Qwen2.5-Coder-32B-Instruct`| See [ModelScope](https://www.modelscope.cn/docs/model-service/API-Inference/intro)| -->
+<!-- |**Silicon**|`silicon`|`SILICON_API_KEY`, `SILICON_MODEL`|`[Your Key]`, `Qwen/Qwen2.5-7B-Instruct`|See [SiliconCloud](https://docs.siliconflow.cn/quickstart)| -->
+<!-- |**Gemini**|`gemini`|`GEMINI_API_KEY`, `GEMINI_MODEL`|`[Your Key]`, `gemini-1.5-flash`|See [Gemini](https://ai.google.dev/gemini-api/docs/openai)| -->
+<!-- |**Azure**|`azure`|`AZURE_ENDPOINT`, `AZURE_API_KEY`|`https://api.translator.azure.cn`, `[Your Key]`|See [Azure](https://docs.azure.cn/en-us/ai-services/translator/text-translation-overview)| -->
+<!-- |**Tencent**|`tencent`|`TENCENTCLOUD_SECRET_ID`, `TENCENTCLOUD_SECRET_KEY`|`[Your ID]`, `[Your Key]`|See [Tencent](https://www.tencentcloud.com/products/tmt?from_qcintl=122110104)| -->
+<!-- |**Dify**|`dify`|`DIFY_API_URL`, `DIFY_API_KEY`|`[Your DIFY URL]`, `[Your Key]`|See [Dify](https://github.com/langgenius/dify),Three variables, lang_out, lang_in, and text, need to be defined in Dify's workflow input.| -->
+<!-- |**AnythingLLM**|`anythingllm`|`AnythingLLM_URL`, `AnythingLLM_APIKEY`|`[Your AnythingLLM URL]`, `[Your Key]`|See [anything-llm](https://github.com/Mintplex-Labs/anything-llm)| -->
+<!-- |**Argos Translate**|`argos`| | |See [argos-translate](https://github.com/argosopentech/argos-translate)| -->
+<!-- |**Grok**|`grok`| `GORK_API_KEY`, `GORK_MODEL` | `[Your GORK_API_KEY]`, `grok-2-1212` |See [Grok](https://docs.x.ai/docs/overview)| -->
 
-對於不在上述表格中，但兼容 OpenAI API 的大語言模型，可以使用與 OpenAI 相同的方式設定環境變數。
+<!-- 對於不在上述表格中，但兼容 OpenAI API 的大語言模型，可以使用與 OpenAI 相同的方式設定環境變數。 -->
 
 使用 `-s service` 或 `-s service:model` 指定翻譯服務：
 
