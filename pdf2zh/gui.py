@@ -47,8 +47,8 @@ from pdf2zh.translator import (
 
 # The following variables associate strings with translators
 service_map: dict[str, BaseTranslator] = {
-    "Google": GoogleTranslator,
-    "Bing": BingTranslator,
+    # "Google": GoogleTranslator,
+    # "Bing": BingTranslator,
     # "DeepL": DeepLTranslator,
     # "DeepLX": DeepLXTranslator,
     # "Ollama": OllamaTranslator,
@@ -66,12 +66,12 @@ service_map: dict[str, BaseTranslator] = {
     # "Argos Translate": ArgosTranslator,
     # "Grok": GorkTranslator,
     # "Groq": GroqTranslator,
-    "DeepSeek V3": DeepseekChatTranslator,
-    "DeepSeek R1（蒸馏）": DeepseekReasonerDistillTranslator,
-    # "DeepSeek R1（很贵）": DeepseekReasonerTranslator,
     # "OpenAI-liked": OpenAIlikedTranslator,
-    "通义千问 MT Turbo": QwenMtTurboTranslator,
-    "通义千问 MT Plus（很贵）": QwenMtPlusTranslator,
+    "通义千问 MT Turbo（推荐）": QwenMtTurboTranslator,
+    "DeepSeek V3（较慢）": DeepseekChatTranslator,
+    "DeepSeek R1（32b蒸馏）（很慢、较贵）": DeepseekReasonerDistillTranslator,
+    "通义千问 MT Plus（较慢、很贵）": QwenMtPlusTranslator,
+    # "DeepSeek R1（很贵）": DeepseekReasonerTranslator,
 }
 
 # The following variables associate strings with specific languages
@@ -407,7 +407,7 @@ with gr.Blocks(
             service = gr.Dropdown(
                 label="Service",
                 choices=service_map.keys(),
-                value="通义千问 MT Turbo",
+                value="通义千问 MT Turbo（推荐）",
             )
             envs = []
             for i in range(3):
