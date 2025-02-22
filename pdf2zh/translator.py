@@ -801,7 +801,7 @@ class DeepseekReasonerTranslator(OpenAITranslator):
 
 
 class DeepseekReasonerDistillTranslator(OpenAITranslator):
-    name = "deepseek-reasoner-d"
+    name = "deepseek-reasoner-distill"
     envs = {
         "DEEPSEEKREASONERDISTILL_BASE_URL": ConfigManager.get("DEEPSEEKREASONERDISTILL_BASE_URL"),
         "DEEPSEEKREASONERDISTILL_API_KEY": ConfigManager.get("DEEPSEEKREASONERDISTILL_API_KEY"),
