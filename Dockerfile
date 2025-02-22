@@ -24,4 +24,4 @@ COPY . .
 RUN uv pip install --system --no-cache .
 
 # Clear cache and config every time when starting the container
-CMD ["rm", "-rf", "~/.cache/pdf2zh", "~/.config/PDFMathTranslate/config.json", "&&", "pdf2zh", "-i"]
+CMD rm -rf ~/.cache/pdf2zh ~/.config/PDFMathTranslate/config.json && pdf2zh -i
