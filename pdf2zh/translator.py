@@ -769,7 +769,7 @@ class GroqTranslator(OpenAITranslator):
 class DeepseekChatTranslator(OpenAITranslator):
     name = "deepseek-chat"
     envs = {
-        "DEEPSEEKCHAT_BASE_URL": "https://api.deepseek.com/v1",
+        "DEEPSEEKCHAT_BASE_URL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
         "DEEPSEEKCHAT_API_KEY": None,
         "DEEPSEEKCHAT_MODEL": "deepseek-chat",
     }
@@ -788,7 +788,7 @@ class DeepseekChatTranslator(OpenAITranslator):
 class DeepseekReasonerTranslator(OpenAITranslator):
     name = "deepseek-reasoner"
     envs = {
-        "DEEPSEEKREASONER_BASE_URL": "https://api.deepseek.com/v1",
+        "DEEPSEEKREASONER_BASE_URL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
         "DEEPSEEKREASONER_API_KEY": None,
         "DEEPSEEKREASONER_MODEL": "deepseek-reasoner",
     }
