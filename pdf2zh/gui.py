@@ -68,7 +68,7 @@ service_map: dict[str, BaseTranslator] = {
     # "Groq": GroqTranslator,
     "DeepSeek V3": DeepseekChatTranslator,
     "DeepSeek R1（蒸馏）": DeepseekReasonerDistillTranslator,
-    "DeepSeek R1（很贵）": DeepseekReasonerTranslator,
+    # "DeepSeek R1（很贵）": DeepseekReasonerTranslator,
     # "OpenAI-liked": OpenAIlikedTranslator,
     "通义千问 MT Turbo": QwenMtTurboTranslator,
     "通义千问 MT Plus（很贵）": QwenMtPlusTranslator,
@@ -407,7 +407,7 @@ with gr.Blocks(
             service = gr.Dropdown(
                 label="Service",
                 choices=service_map.keys(),
-                value="Bing",
+                value="通义千问 MT Turbo",
             )
             envs = []
             for i in range(3):
@@ -443,7 +443,7 @@ with gr.Blocks(
             with gr.Accordion("Open for More Experimental Options!", open=False):
                 gr.Markdown("#### Experimental")
                 threads = gr.Textbox(
-                    label="number of threads", interactive=True, value="4"
+                    label="number of threads", interactive=False, value="4"
                 )
                 prompt = gr.Textbox(
                     label="Custom Prompt for llm", interactive=True, visible=False
@@ -457,7 +457,7 @@ with gr.Blocks(
                     _envs.append(gr.update(visible=False, value=""))
                 for i, env in enumerate(translator.envs.items()):
                     _envs[i] = gr.update(
-                        visible=True,
+                        visible=False,
                         label=env[0],
                         value=ConfigManager.get_env_by_translatername(
                             translator, env[0], env[1]
