@@ -64,9 +64,14 @@ class BaseTranslator:
                 needUpdate = True
         if needUpdate:
             ConfigManager.set_translator_by_name(self.name, self.envs)
+        needUpdate = False
         if envs is not None:
             for key in envs:
-                self.envs[key] = envs[key]
+                # Avoid overriding above value with empty passed values
+                if envs[key] is not None and envs[key] is not '':
+                    self.envs[key] = envs[key]
+                    needUpdate = True
+        if needUpdate:
             ConfigManager.set_translator_by_name(self.name, self.envs)
 
     def add_cache_impact_parameters(self, k: str, v):
