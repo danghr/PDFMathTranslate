@@ -810,10 +810,10 @@ class DeepseekReasonerDistillTranslator(OpenAITranslator):
 
     def __init__(self, lang_in, lang_out, model, envs=None, prompt=None):
         self.set_envs(envs)
-        base_url = self.envs["DEEPSEEK_BASE_URL"]
-        api_key = self.envs["DEEPSEEK_API_KEY"]
+        base_url = self.envs["DEEPSEEKREASONERDISTILL_BASE_URL"]
+        api_key = self.envs["DEEPSEEKREASONERDISTILL_API_KEY"]
         if not model:
-            model = self.envs["DEEPSEEK_MODEL"]
+            model = self.envs["DEEPSEEKREASONERDISTILL_MODEL"]
         super().__init__(lang_in, lang_out, model, base_url=base_url, api_key=api_key)
         self.prompttext = prompt
 
