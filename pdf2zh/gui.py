@@ -47,8 +47,8 @@ from pdf2zh.translator import (
 
 # The following variables associate strings with translators
 service_map: dict[str, BaseTranslator] = {
-    # "Google": GoogleTranslator,
-    # "Bing": BingTranslator,
+    "Google": GoogleTranslator,
+    "Bing": BingTranslator,
     # "DeepL": DeepLTranslator,
     # "DeepLX": DeepLXTranslator,
     # "Ollama": OllamaTranslator,
@@ -407,7 +407,7 @@ with gr.Blocks(
             service = gr.Dropdown(
                 label="Service",
                 choices=service_map.keys(),
-                value="通义千问 MT Turbo",
+                value="Bing",
             )
             envs = []
             for i in range(3):
@@ -457,7 +457,7 @@ with gr.Blocks(
                     _envs.append(gr.update(visible=False, value=""))
                 for i, env in enumerate(translator.envs.items()):
                     _envs[i] = gr.update(
-                        visible=False,
+                        visible=True,
                         label=env[0],
                         value=ConfigManager.get_env_by_translatername(
                             translator, env[0], env[1]
