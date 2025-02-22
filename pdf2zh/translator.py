@@ -805,7 +805,7 @@ class DeepseekReasonerTranslator(OpenAITranslator):
 
 
 class DeepseekReasonerDistillTranslator(OpenAITranslator):
-    name = "deepseek-reasoner-distill"
+    name = "deepseek-reasoner-d"
     envs = {
         "DEEPSEEKREASONERDISTILL_BASE_URL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
         "DEEPSEEKREASONERDISTILL_API_KEY": None,
