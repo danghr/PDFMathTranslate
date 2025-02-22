@@ -913,7 +913,7 @@ class QwenMtTurboTranslator(OpenAITranslator):
         return response.choices[0].message.content.strip()
 
 
-class QwenMtPlusTranslator(QwenMtTurboTranslator):
+class QwenMtPlusTranslator(OpenAITranslator):
     """
     Use Qwen-MT model from Aliyun. it's designed for translating.
     Since Traditional Chinese is not yet supported by Aliyun. it will be also translated to Simplified Chinese, when it's selected.
